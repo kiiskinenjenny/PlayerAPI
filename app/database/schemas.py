@@ -1,9 +1,12 @@
 from pydantic import BaseModel
+import datetime
 
 
 class EventBase(BaseModel):
-    name: str
-    year_published: int
+    id: int
+    type: str
+    detail: str    
+    timestamp: datetime.datetime
     player_id: int
 
     class Config:
@@ -11,8 +14,8 @@ class EventBase(BaseModel):
 
 
 class EventIn(BaseModel):
-    name: str
-    year_published: int
+    type: str
+    detail: str 
 
     class Config:
         orm_mode = True
@@ -42,19 +45,13 @@ class PlayerBase(BaseModel):
         orm_mode = True
 
 
-class EventInPlayer(BaseModel):
-    """Käytetään pelaajan tietojen yhteydessä."""
-    name: str
-    year_published: int
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
 class PlayerDb(PlayerBase):
     id: int
-    events: list[EventInPlayer]
+    events: list[EventBase]
+
+
+class OnlyPlayerDb(PlayerBase):
+    id: int
 
 
 class PlayerAllListItem(BaseModel):
@@ -62,4 +59,4 @@ class PlayerAllListItem(BaseModel):
     name: str
 
     class Config:
-        orm_mode = True
+        orm_mode = True      

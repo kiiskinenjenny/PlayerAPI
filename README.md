@@ -2,7 +2,7 @@
 
 ## Virtuaaliympäristö
 
-### Luo virtuaaliympäristö:
+### Luo Venv:
 
 View - Command Palette - Python: Create Environment... - Venv
 <br />
@@ -12,7 +12,7 @@ View - Command Palette - Python: Create Environment... - Venv
 Varmistathan, että olet PlayerAPI-kansion juuressa. <br />
 New Terminal: .venv/Scripts/Activate.ps1 <br />
 
-Terminaalissa pitäisi näkyä vihreällä värillä (.venv)
+Terminaalissa pitäisi näkyä (.venv) vihreällä värillä.
 <br />
 
 ## Kirjastot
