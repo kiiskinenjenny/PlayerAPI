@@ -22,7 +22,6 @@ class EventIn(BaseModel):
 
 
 class EventPlayer(BaseModel):
-    """Käytetään /events"""
     id: int
     name: str
 
@@ -32,10 +31,17 @@ class EventPlayer(BaseModel):
 
 class EventDb(EventBase):
     id: int
-    player: EventPlayer
+
+
+class EventAllListItem(BaseModel):
+    id: int
+    type: str
+    detail: str    
+    timestamp: datetime.datetime
+    player_id: int
 
     class Config:
-        fields = {'player_id': {'exclude': True}}
+        orm_mode = True       
 
 
 class PlayerBase(BaseModel):
@@ -59,4 +65,4 @@ class PlayerAllListItem(BaseModel):
     name: str
 
     class Config:
-        orm_mode = True      
+        orm_mode = True   

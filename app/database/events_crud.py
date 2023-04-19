@@ -4,8 +4,25 @@ from . import models
 
 
 def read_all_events(db: Session):
-    rels = db.query(models.Event).all()
-    return rels
+    events = db.query(models.Event).all()
+    return events
+
+
+def read_player_by_type(db: Session, type: str):
+    event = db.query(models.Event).filter(models.Event.type == type).all()
+    allEvents = db.query(models.Event).filter(models.Event.type == type).first()
+    if allEvents is None:
+        raise HTTPException(status_code=400, detail='Bad Request')
+    else:
+        return event
+
+
+
+
+
+
+
+
 
 
 def read_event_by_id(id: int, db: Session):
