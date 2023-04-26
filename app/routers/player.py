@@ -32,7 +32,7 @@ def read_event_by_id(id: int, type: str = '', db: Session = Depends(get_db)):
         return read_player_by_type(db, type, id)
 
 
-@router.post('/{id}/events/', response_model=EventDb, status_code=status.HTTP_201_CREATED)
+@router.post('/{id}/events', response_model=EventDb, status_code=status.HTTP_201_CREATED)
 def create_event_for_player(id: int, event_in: EventIn, db: Session = Depends(get_db)):
     if event_in.type == 'level_started' or event_in.type == 'level_solved':
         return save_event(id, event_in, db)
